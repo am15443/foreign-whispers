@@ -247,3 +247,18 @@ cd frontend && pnpm install && pnpm dev
 - ffmpeg (system-wide)
 - deno (for yt-dlp YouTube extraction)
 - NVIDIA GPU recommended for Whisper + Chatterbox inference
+
+---
+
+## Results
+
+**Demo video (YouTube):** https://youtu.be/9M5RXJ8M3gI
+
+The pipeline successfully dubbed a 60 Minutes segment ("Strait of Hormuz disruption threatens to shake global economy") from English to Spanish with gender-matched voice cloning.
+
+| Output | Description |
+|---|---|
+| Baseline dubbed video | Spanish audio, single Chatterbox default voice |
+| Diarized dubbed video | Spanish audio, gender-matched voices (male/female) via pyannote |
+
+Pipeline stages completed: Download → Transcribe (Whisper) → Translate (argostranslate) → TTS (Chatterbox) → Diarize (pyannote) → Stitch (ffmpeg)
